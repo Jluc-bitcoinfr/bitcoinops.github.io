@@ -7,44 +7,45 @@ type: newsletter
 layout: newsletter
 lang: fr
 ---
-This week's newsletter describes a proposal to allow LN nodes to
-advertise capacity-dependent feerates and announces a software fork of
-Bitcoin Core focused on testing major protocol changes on signet.  Also
-included are our regular sections with summaries of popular questions
-and answers from the Bitcoin Stack Exchange, announcements of new
-releases and release candidates, and descriptions of notable changes to
-popular Bitcoin infrastructure software.
+La newsletter de cette semaine décrit une proposition visant à permettre
+aux nœuds LN d'annoncer des feerates dépendant de la capacité et annonce
+un fork logiciel de Bitcoin Core axé sur le test de changements majeurs
+du protocole sur signet.  Vous trouverez également nos sections habituelles
+avec des résumés des questions et réponses principales du Bitcoin Stack
+Exchange, des annonces de nouvelles versions et de release candidates,
+et des descriptions de changements notables dans les principaux logiciels
+d'infrastructure Bitcoin.
 
-## News
+## Nouvelles
 
-- **LN fee ratecards:** Lisa Neigut [posted][neigut ratecards] to the
-  Lightning-Dev mailing list a proposal for *fee ratecards* that would
-  allow a node to advertise four tiered rates for forwarding fees.  For
-  example, a forwarded payment that leaves a channel with less than 25%
-  of its outbound capacity available to forward subsequent payments
-  would need to pay proportionally more than a payment which leaves 75%
-  of its outbound capacity available.
+- **Fees  Ratecards:** Lisa Neigut [a posté][neigut ratecards]
+  sur la liste de diffusion de Lightning-Dev une porposition de *fee ratecards*
+  qui permettrait à un noeud d'anoncer quatre niveaux de frais de transactions.
+  Par exemple, un paiement transmis qui laisse à un canal moins de 25 % de sa
+  capacité sortante disponible pour transmettre les paiements suivants devra
+  payer proportionnellement plus qu'un paiement qui laisse 75 % de sa capacité
+  de sortie disponible.
 
-    Developer ZmnSCPxj [described][zmnscpxj ratecards] a simple way to
-    use ratecards, "you can model a rate card as four separate channels
-    between the same two nodes, with different costs each.  If the path
-    at the lowest cost fails, you just try another route that may
-    have more hops but lower effective cost, or else try the same
-    channel at a higher cost."
+    Le développeur ZmnSCPxj [a décrit][zmnscpxj ratecards] une façon simple
+    d'utiliser les ratecards, "vous pouvez modéliser une carte tarifaire
+    comme quatre canaux distincts entre les deux mêmes nœuds, avec des coûts
+    différents pour chacun. Si le chemin au coût le plus bas échoue, il suffit
+    d'essayer une autre route qui peut qui peut avoir plus de sauts mais un coût
+    effectif plus faible, ou bien essayer la même canal à un coût plus élevé."
 
-    The proposal also allows for negative fees.  For example, a channel
-    could subsidize payments forwarded through it when it had more than
-    75% outbound capacity by adding 1 satoshi to every 1,000 satoshis in
-    payment value.  Negative fees could be used by merchants to
-    incentivize others to restore inbound capacity to channels
-    frequently used for receiving payments.
+    La proposition prévoit également des redevances négatives.  Par exemple,
+    une chaîne pourrait subventionner les paiements qui lui sont transmis
+    lorsqu'il a plus de 75 % de capacité sortante en ajoutant 1 satoshi pour
+    chaque tranche de 1 000 satoshis de valeur de paiement.  Les frais négatifs
+    pourraient être utilisés par les marchands pour inciter les autres à restaurer
+    la capacité entrante des canaux fréquemment utilisés pour recevoir des paiements.
+    
+    Neigut note que certains nœuds ajustent déjà leurs tarifs en fonction de la
+    capacité des canaux, et que les fee ratecards constitueraient un moyen plus
+    efficace pour les opérateurs de nœuds de communiquer leurs intentions au réseau
+    que d'annoncer fréquemment de nouveaux feerates via le gossp de LN.
 
-    Neigut notes that some nodes are already adjusting their fees based
-    on channel capacity, and that fee ratecards would provide a more
-    efficient way for node operators to communicate their intentions to the network than
-    frequently advertising new feerates via the LN gossip network.
-
-- **Bitcoin implementation designed for testing soft forks on signet:**
+- **Implémentation de Bitcoin conçue pour tester les soft forks sur signet:**
   Anthony Towns [posted][towns bi] to the Bitcoin-Dev mailing list a
   description of a fork of Bitcoin Core he's working on that will only
   operate on the default [signet][topic signet] and which will enforce
