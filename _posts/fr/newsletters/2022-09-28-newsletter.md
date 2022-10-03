@@ -10,88 +10,88 @@ lang: fr
 La newsletter de cette semaine décrit une proposition visant à permettre
 aux nœuds LN d'annoncer des feerates dépendant de la capacité et annonce
 un fork logiciel de Bitcoin Core axé sur le test de changements majeurs
-du protocole sur signet.  Vous trouverez également nos sections habituelles
-avec des résumés des questions et réponses principales du Bitcoin Stack
-Exchange, des annonces de nouvelles versions et de release candidates,
+du protocole sur signet. Vous trouverez également nos sections habituelles
+avec des résumés des principales questions et réponses du Bitcoin Stack
+Exchange, des annonces de nouvelles mises à jour et release candidate,
 et des descriptions de changements notables dans les principaux logiciels
 d'infrastructure Bitcoin.
 
 ## Nouvelles
 
-- **Fees  Ratecards:** Lisa Neigut [a posté][neigut ratecards]
-  sur la liste de diffusion de Lightning-Dev une porposition de *fee ratecards*
-  qui permettrait à un noeud d'anoncer quatre niveaux de frais de transactions.
-  Par exemple, un paiement transmis qui laisse à un canal moins de 25 % de sa
+- **Fees Ratecards:** Lisa Neigut [a posté][neigut ratecards]
+  sur la liste de diffusion de Lightning-Dev une proposition de *fee ratecards*
+  qui permettrait à un noeud d'annoncer quatre niveaux de frais de transactions.
+  Par exemple, un paiement qui laisse à un canal moins de 25 % de sa
   capacité sortante disponible pour transmettre les paiements suivants devra
-  payer proportionnellement plus qu'un paiement qui laisse 75 % de sa capacité
+  payer proportionellement plus qu'un paiement qui laisse 75 % de sa capacité
   de sortie disponible.
 
-    Le développeur ZmnSCPxj [a décrit][zmnscpxj ratecards] une façon simple
-    d'utiliser les ratecards, "vous pouvez modéliser une carte tarifaire
-    comme quatre canaux distincts entre les deux mêmes nœuds, avec des coûts
-    différents pour chacun. Si le chemin au coût le plus bas échoue, il suffit
-    d'essayer une autre route qui peut qui peut avoir plus de sauts mais un coût
-    effectif plus faible, ou bien essayer la même canal à un coût plus élevé."
-
-    La proposition prévoit également des redevances négatives.  Par exemple,
-    une chaîne pourrait subventionner les paiements qui lui sont transmis
-    lorsqu'il a plus de 75 % de capacité sortante en ajoutant 1 satoshi pour
-    chaque tranche de 1 000 satoshis de valeur de paiement.  Les frais négatifs
-    pourraient être utilisés par les marchands pour inciter les autres à restaurer
-    la capacité entrante des canaux fréquemment utilisés pour recevoir des paiements.
-    
-    Neigut note que certains nœuds ajustent déjà leurs tarifs en fonction de la
-    capacité des canaux, et que les fee ratecards constitueraient un moyen plus
-    efficace pour les opérateurs de nœuds de communiquer leurs intentions au réseau
-    que d'annoncer fréquemment de nouveaux feerates via le gossp de LN.
+  Le développeur ZmnSCPxj [a décrit][zmnscpxj ratecards] une façon simple
+  d'utiliser les ratecards, "vous pouvez modéliser une carte tarifaire
+  comme quatre canaux distincts entre les deux mêmes nœuds, avec des coûts
+  différents pour chacun. Si le chemin au coût le plus bas échoue, il suffit
+  d'essayer une autre route qui peut avoir plus de sauts mais un coût
+  effectif plus faible, ou bien essayer le même canal avec un coût plus élevé."
+  La proposition prévoit également des redevances négatives. Par exemple,
+  une chaîne pourrait subventionner les paiements qui lui sont transmis
+  lorsqu'il a plus de 75 % de capacité sortante en ajoutant 1 satoshi pour
+  chaque tranche de 1 000 satoshis de valeur de paiement. Les frais négatifs
+  pourraient être utilisés par les marchands pour inciter les autres à restaurer
+  la capacité entrante des canaux fréquemment utilisés pour recevoir des paiements.
+ 
+  Neigut note que certains nœuds ajustent déjà leurs tarifs en fonction de la
+  capacité des canaux, et que les fee ratecards constitueraient un moyen plus
+  efficace pour les opérateurs de nœuds de communiquer leurs intentions au réseau
+  que d'annoncer fréquemment de nouveaux feerates via le gossip de LN.
 
 - **Implémentation de Bitcoin conçue pour tester les soft forks sur signet:**
-  Anthony Towns [posted][towns bi] to the Bitcoin-Dev mailing list a
-  description of a fork of Bitcoin Core he's working on that will only
-  operate on the default [signet][topic signet] and which will enforce
-  rules for soft fork proposals with high-quality specifications and
-  implementations.  This should make it simpler for users to experiment
-  with the proposed change, including directly comparing one change to
-  another similar change (e.g. comparing [OP_CHECKTEMPLATEVERIFY][topic
-  op_checktemplateverify] to [SIGHASH_ANYPREVOUT][topic
-  sighash_anyprevout]).  Towns also plans to include proposed major
-  changes to transaction relay policy (such as [package relay][topic
-  package relay]).
+  Anthony Towns [a posté][towns bi] sur la liste de diffusion de Bitcoin-Dev une
+  description de fork de Bitcoin Core sur laquelle il travaille qui pourrait seulement
+  s'appliquer par défaut sur [signet][topic signet] et qui appliquera des règles
+  pour les propositions de soft fork avec des spécifications et des implémentations
+  de haute qualité. Cela devrait permettre aux utilisateurs d'expérimenter plus
+  facilement la modification proposée, notamment en comparant directement les
+  modifications entre elles (ex. comparer [OP_CHECKTEMPLATEVERIFY][topic
+  op_checktemplateverify] à [SIGHASH_ANYPREVOUT][topic sighash_anyprevout]).
+  Towns prévoit également d'inclure les changements majeurs proposés à la politique
+  de relai des transactions (tel que [package relay][topic package relay]).
 
-    Towns is seeking constructive criticism of the idea for this new
-    testing implementation, called [Bitcoin Inquisition][], as well as
-    reviews of the [pull requests][bi prs] adding the initial set of
-    soft forks to it.
+    Towns cherche à obtenir des critiques constructives sur l'idée de cette nouvelle
+    mise en œuvre de tests, appelée [Bitcoin Inquisition][], ainsi qu'une
+    relecture des [pull requests][bi prs] ajoutées aux paramètres initiaux du
+    soft forks.
 
-## Selected Q&A from Bitcoin Stack Exchange
+## Selection de Q&R du Bitcoin Stack Exchange
 
-*[Bitcoin Stack Exchange][bitcoin.se] is one of the first places Optech
-contributors look for answers to their questions---or when we have a
-few spare moments to help curious or confused users.  In
-this monthly feature, we highlight some of the top-voted questions and
-answers posted since our last update.*
+*[Bitcoin Stack Exchange][bitcoin.se] est une des principales places pour les
+contributeurs d'Optech pour trouver les réponses à leurs questions---ou lorsque nous
+avons quelques instants pour aider les utilisateurs curieux ou confus. Dans cette
+chronique mensuelle, nous mettons en avant certaines des questions et réponses les
+plus postées depuis notre dernière édition.*
 
 {% comment %}<!-- https://bitcoin.stackexchange.com/search?tab=votes&q=created%3a1m..%20is%3aanswer -->{% endcomment %}
 {% assign bse = "https://bitcoin.stackexchange.com/a/" %}
 
-- [Is it possible to determine whether an HD wallet was used to create a given transaction?]({{bse}}115311)
-  Pieter Wuille points out that while identifying UTXOs created using an [HD
-  wallet][topic bip32] is not possible, other onchain data can be used to
-  fingerprint wallet software including types of inputs used, types of outputs
-  created, order of inputs and outputs in the transaction, [coin
-  selection][topic coin selection] algorithm, and use of [timelocks][topic timelocks].
+- [Est-il possible de déterminer si un portefeuille HD a été utilisé pour créer une transaction donnée?]({{bse}}115311)
+  Pieter Wuille souligne que, bien qu'il ne soit pas possible d'identifier les UTXO
+  créés à l'aide d'un [portefeuille HD][topic bip32], d'autres données onchain peuvent
+  être utilisées pour identifier le logiciel du portefeuille, notamment les types
+  d'entrées utilisées, les types de sorties créées, l'ordre des entrées et des sorties
+  dans la transaction, l'algorithme de [selection des pièces][topic coin selection]
+  et l'utilisation de [timelocks][topic timelocks].
 
-- [Why is there a 5-day gap between the genesis block and block 1?]({{bse}}115344)
-  Murch notes that the gap in the timeline could be explained by the genesis
-  block having a higher difficulty target than required, Satoshi setting the
-  block's timestamp in the past, or the [original Bitcoin software waiting][github
-  jrubin annotated] for a peer before starting to mine.
+- [Pourquoi y a-t-il un écart de 5 jours entre le bloc de la genèse et le bloc 1 ?]({{bse}}115344)
+  Murch note que l'écart dans la chronologie pourrait s'expliquer par le fait que le
+  bloc genesis a un objectif de difficulté plus élevé que nécessaire, que Satoshi a
+  fixé l'horodatage du bloc dans le passé, , ou le [logiciel d'origined de Bitcoin
+  attendait][github jrubin annotated] pour un pair avant de commencer à miner.
 
-- [Is it possible to set RBF as always-on in bitcoind?]({{bse}}115360)
-  Michael Folkson and Murch explain the `walletrbf` configuration option and
-  list a series of related changes involving defaulting to [RBF][topic rbf] in the
-  GUI, defaulting to RBF in RPCs, and using [`mempoolfullrbf`][news208
-  mempoolfullrbf] to allow replacements without signaling.
+- [Est-il possible de régler RBF toujours actif dans bitcoind?]({{bse}}115360)
+  Michael Folkson et Murch expliquent les options de configuration de `walletrbf`
+  et énumèrent une série de changements connexes impliquant l'utilisation par
+  défaut de [RBF][topic rbf] dans le GUI, l'utilisation par défaut de RBF dans les RPC,
+  et l'utilsation de [`mempoolfullrbf`][news208 mempoolfullrbf] pour autoriser les
+  remplacements sans signalement.
 
 - [Why would I need to ban peer nodes on the Bitcoin network?]({{bse}}115183)
   In contrast to [discouraging a peer][bitcoin 23.x banman], user RedGrittyBrick
