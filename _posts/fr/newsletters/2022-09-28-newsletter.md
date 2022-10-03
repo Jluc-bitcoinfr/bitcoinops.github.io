@@ -72,7 +72,7 @@ plus postées depuis notre dernière édition.*
 {% comment %}<!-- https://bitcoin.stackexchange.com/search?tab=votes&q=created%3a1m..%20is%3aanswer -->{% endcomment %}
 {% assign bse = "https://bitcoin.stackexchange.com/a/" %}
 
-- [Est-il possible de déterminer si un portefeuille HD a été utilisé pour créer une transaction donnée?]({{bse}}115311)
+- [Est-il possible de déterminer si un portefeuille HD a été utilisé pour créer une transaction donnée ?]({{bse}}115311)
   Pieter Wuille souligne que, bien qu'il ne soit pas possible d'identifier les UTXO
   créés à l'aide d'un [portefeuille HD][topic bip32], d'autres données onchain peuvent
   être utilisées pour identifier le logiciel du portefeuille, notamment les types
@@ -83,10 +83,10 @@ plus postées depuis notre dernière édition.*
 - [Pourquoi y a-t-il un écart de 5 jours entre le bloc de genèse et le bloc 1 ?]({{bse}}115344)
   Murch note que l'écart dans la chronologie pourrait s'expliquer par le fait que le
   bloc genesis a un objectif de difficulté plus élevé que nécessaire, que Satoshi a
-  fixé l'horodatage du bloc dans le passé, , ou le [logiciel d'origine de Bitcoin
+  fixé l'horodatage du bloc dans le passé, ou le [logiciel d'origine de Bitcoin
   attendait][github jrubin annotated] pour un pair avant de commencer à miner.
 
-- [Est-il possible de régler RBF toujours actif dans bitcoind?]({{bse}}115360)
+- [Est-il possible de régler RBF toujours actif dans bitcoind ?]({{bse}}115360)
   Michael Folkson et Murch expliquent les options de configuration de `walletrbf`
   et énumèrent une série de changements connexes impliquant l'utilisation par
   défaut de [RBF][topic rbf] dans le GUI, l'utilisation par défaut de RBF dans les RPC,
@@ -94,8 +94,8 @@ plus postées depuis notre dernière édition.*
   remplacements sans signalement.
 
 - [Pourquoi aurais-je besoin de bannir les noeuds de pairs du réseau Bitcoin ?]({{bse}}115183)
-  Au contraire de [découragé un pair][bitcoin 23.x banman], l'utilsateur RedGrittyBrick
-  explique qu'un opérateur de noeuds peut choisir de manuellement refuser un pair en
+  Au contraire de [découragé un pair][bitcoin 23.x banman], l'utilisateur RedGrittyBrick
+  explique qu'un opérateur de noeuds peut choisir de refuser manuellement un pair en
   utilisant le RPC [`setban`][setban rpc] si celui-ci a un mauvais comportement, est suspecté d'être malicieux,
   d'être un noeud de surveillance, ou faisant partie d'un fournisseur de cloud, entre autres raisons.
 
