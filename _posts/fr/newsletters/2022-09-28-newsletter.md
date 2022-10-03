@@ -18,7 +18,7 @@ d'infrastructure Bitcoin.
 
 ## Nouvelles
 
-- **Fees Ratecards:** Lisa Neigut [a posté][neigut ratecards]
+- **Fees Ratecards:** Lisa Neigut [a postée][neigut ratecards]
   sur la liste de diffusion de Lightning-Dev une proposition de *fee ratecards*
   qui permettrait à un noeud d'annoncer quatre niveaux de frais de transactions.
   Par exemple, un paiement qui laisse à un canal moins de 25 % de sa
@@ -45,7 +45,7 @@ d'infrastructure Bitcoin.
   que d'annoncer fréquemment de nouveaux feerates via le gossip de LN.
 
 - **Implémentation de Bitcoin conçue pour tester les soft forks sur signet:**
-  Anthony Towns [a posté][towns bi] sur la liste de diffusion de Bitcoin-Dev une
+  Anthony Towns [a posté][towns bi] sur la liste de diffusion Bitcoin-Dev une
   description de fork de Bitcoin Core sur laquelle il travaille qui pourrait seulement
   s'appliquer par défaut sur [signet][topic signet] et qui appliquera des règles
   pour les propositions de soft fork avec des spécifications et des implémentations
@@ -80,10 +80,10 @@ plus postées depuis notre dernière édition.*
   dans la transaction, l'algorithme de [selection des pièces][topic coin selection]
   et l'utilisation de [timelocks][topic timelocks].
 
-- [Pourquoi y a-t-il un écart de 5 jours entre le bloc de la genèse et le bloc 1 ?]({{bse}}115344)
+- [Pourquoi y a-t-il un écart de 5 jours entre le bloc de genèse et le bloc 1 ?]({{bse}}115344)
   Murch note que l'écart dans la chronologie pourrait s'expliquer par le fait que le
   bloc genesis a un objectif de difficulté plus élevé que nécessaire, que Satoshi a
-  fixé l'horodatage du bloc dans le passé, , ou le [logiciel d'origined de Bitcoin
+  fixé l'horodatage du bloc dans le passé, , ou le [logiciel d'origine de Bitcoin
   attendait][github jrubin annotated] pour un pair avant de commencer à miner.
 
 - [Est-il possible de régler RBF toujours actif dans bitcoind?]({{bse}}115360)
@@ -93,67 +93,66 @@ plus postées depuis notre dernière édition.*
   et l'utilsation de [`mempoolfullrbf`][news208 mempoolfullrbf] pour autoriser les
   remplacements sans signalement.
 
-- [Why would I need to ban peer nodes on the Bitcoin network?]({{bse}}115183)
-  In contrast to [discouraging a peer][bitcoin 23.x banman], user RedGrittyBrick
-  explains that a node operator could choose to manually ban a peer using the
-  [`setban`][setban rpc] RPC if the peer is misbehaving, a suspected malicious or surveillance
-  node, or part of a cloud provider's network, among other reasons.
+- [Pourquoi aurais-je besoin de bannir les noeuds de pairs du réseau Bitcoin ?]({{bse}}115183)
+  Au contraire de [découragé un pair][bitcoin 23.x banman], l'utilsateur RedGrittyBrick
+  explique qu'un opérateur de noeuds peut choisir de manuellement refuser un pair en
+  utilisant le RPC [`setban`][setban rpc] si celui-ci a un mauvais comportement, est suspecté d'être malicieux,
+  d'être un noeud de surveillance, ou faisant partie d'un fournisseur de cloud, entre autres raisons.
 
-## Releases and release candidates
+## Mises à jour et release candidates
 
-*New releases and release candidates for popular Bitcoin infrastructure
-projects.  Please consider upgrading to new releases or helping to test
-release candidates.*
+*Nouvelles mises à jour et release candidates du principal logiciel d'infrastructure Bitcoin.
+Prévoyez s'il vous plait de vous mettre à jour à la nouvelle version ou d'aider à tester les pré-versions.*
 
-- [Core Lightning 0.12.1][] is a maintenance release containing several
-  bug fixes.
+- [Core Lightning 0.12.1][] est une mise à jour de maintenance contenant plusieurs corrections de bugs.
 
-- [Bitcoin Core 0.24.0 RC1][] is the first release candidate for the
-  next version of the network's most widely used full node
-  implementation.
+- [Bitcoin Core 0.24.0 RC1][] est la première release candidate de la prochaine version de l'implémentation
+  de nœuds complets la plus largement utilisée sur le réseau.
 
-## Notable code and documentation changes
+## Changements notables dans le code et la documentation
 
-*Notable changes this week in [Bitcoin Core][bitcoin core repo], [Core
+*Changements notables cette semaine dans [Bitcoin Core][bitcoin core repo], [Core
 Lightning][core lightning repo], [Eclair][eclair repo], [LDK][ldk repo],
 [LND][lnd repo], [libsecp256k1][libsecp256k1 repo], [Hardware Wallet
 Interface (HWI)][hwi repo], [Rust Bitcoin][rust bitcoin repo], [BTCPay
 Server][btcpay server repo], [BDK][bdk repo], [Bitcoin Improvement
-Proposals (BIPs)][bips repo], and [Lightning BOLTs][bolts repo].*
+Proposals (BIPs)][bips repo], et [Lightning BOLTs][bolts repo].*
 
-- [Bitcoin Core #26116][] allows the `importmulti` RPC to import a
-  watch-only item even if the wallet's private keys are encrypted.  This
-  matches the behavior of the old `importaddress` RPC.
+- [Bitcoin Core #26116][] autorise le RPC `importmulti` pour importer
+  les éléments en lecture seule, même si le portefeuille utilise des clés privées encryptées.
+  Cela correspond au comportement de l'ancien RPC `importaddress`.
 
-- [Core Lightning #5594][] makes several changes, including adding and
-  updating several APIs, to allow the `autoclean` plugin to delete old
-  invoices, payments, and forwarded payments.
+- [Core Lightning #5594][] apporte plusieurs modifications, notamment
+  l'ajout et la mise à jour de plusieurs API, pour permettre au plugin
+  `autoclean` de supprimer les anciennes factures, les anciens paiements
+  et les paiements transférés. 
 
-- [Core Lightning #5315][] allows the user to choose the *channel
-  reserve* for a particular channel.  The reserve is the amount a node
-  will normally not accept from a channel peer as part of a payment or
-  forward.  If the peer later attempts to cheat, the honest node can
-  spend the reserve.  Core Lightning defaults to a channel reserve of 1%
-  of the channel balance, penalizing by that amount any peers that
-  attempt to cheat.
+- [Core Lightning #5315][] permet à l'utilisateur de choisir
+  la *channel reserve* pour un canal particulier. La réserve est le
+  montant qu'un nœud n'acceptera normalement pas d'un pair du canal dans
+  le cadre d'un paiement ou d'un transfert. Si le pair tente ensuite de
+  tricher, le nœud honnête peut dépenser la réserve. Core Lightning
+  propose par défaut une réserve de canal de 1% du solde du canal,
+  pénalisant de ce montant tout pair qui tente de tricher.
 
-    This merged PR allows the user to reduce the reserve for a specific
-    channel, including reducing it to zero.  Although this can be
-    dangerous---the lower the reserve, the less penalty there is for
-    cheating---it can be useful for certain situations.  Most notably,
-    setting the reserve to zero can allow the remote peer to spend all of their
-    funds, emptying their channel.
-
-- [Rust Bitcoin #1258][] adds a method for comparing two locktimes to
-  determine whether one satisfies the other.  As described in the code
-  comments, "A lock time can only be satisfied by n blocks being mined
-  or n seconds passing. If you have two lock times (same unit) then the
-  larger lock time being satisfied implies (in a mathematical sense) the
-  smaller one being satisfied.  This function is useful if you wish to
-  check a lock time against various other locks e.g., filtering out
-  locks which cannot be satisfied. Can also be used to remove the
-  smaller value of two `OP_CHECKLOCKTIMEVERIFY` operations within one
-  branch of the script."
+    Cette introduction de PR permet à l'utilisateur de réduire la réserve
+    d'un canal spécifique, y compris de la réduire à zéro. Bien que cela
+    puisse être dangereux---plus la réserve est faible, moins il y a de
+    pénalités pour la tricherie---cela peut être utile dans certaines
+    situations. En particulier, la mise à zéro de la réserve peut permettre
+    à l'homologue distant de dépenser tous ses fonds, vidant ainsi son canal.
+    
+- [Rust Bitcoin #1258][] ajoute une méthode pour comparer deux locktimes afin
+  de déterminer si l'un satisfait l'autre. Comme décrit dans les commentaires
+  du code, "Un temps de verrouillage ne peut être satisfait que par n blocs
+  minés ou n secondes écoulées. Si vous avez deux temps de verrouillage
+  (même unité), alors le plus grand temps de verrouillage satisfait implique
+  (dans un sens mathématique) que le plus petit est aussi satisfait. Cette
+  fonction est utile si vous souhaitez vérifier un temps de verrouillage par
+  rapport à d'autres verrous, par exemple en filtrant les verrous qui ne
+  peuvent pas être satisfaits. Elle peut également être utilisée pour supprimer
+  la plus petite valeur de deux opérations `OP_CHECKLOCKTIMEVERIFY` dans une
+  branche du script."
 
 {% include references.md %}
 {% include linkers/issues.md v=2 issues="26116,5594,5315,1258" %}
